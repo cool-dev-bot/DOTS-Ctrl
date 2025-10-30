@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         <Navbar />
         {/* Add padding equal to navbar height */}
-        <div className="pt-[90px] md:pt-[100px]">{children}</div>
+        <div className="sm:pt-[10px] md:pt-[100px]">{children}</div>
       </body>
     </html>
   );
