@@ -94,7 +94,7 @@ export default function Home() {
 
 
 
-<div className="bg-white h-[50vh] w-full">
+<div className="bg-white h-[10vh] w-full">
 .
 </div>
 </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 // Load Inter (main font)
 const inter = Inter({
@@ -33,6 +34,7 @@ export default function RootLayout({
         <Navbar />
         {/* Add padding equal to navbar height */}
         <div className="sm:pt-[10px] md:pt-[100px]">{children}</div>
+        <Footer/>
       </body>
     </html>
   );
