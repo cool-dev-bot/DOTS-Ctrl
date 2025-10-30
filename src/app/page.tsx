@@ -41,11 +41,15 @@ export default function Home() {
   </div>
 
   {/* Box 4 */}
-  <div className="flex items-center justify-center">
-    <button className="text-[#BF1E2E] text-lg sm:text-xl font-light">
-      MORE →
-    </button>
-  </div>
+<div className="flex items-center justify-center">
+  <button className="flex items-center justify-center gap-2 text-[#BF1E2E] text-lg sm:text-xl font-light group  ">
+    MORE 
+    <span className="text-2xl transform transition-all duration-300 group-hover:translate-x-2 group-hover:scale-125">
+      →
+    </span>
+  </button>
+</div>
+
 </div>
 
 
@@ -80,12 +84,12 @@ export default function Home() {
       <p className="font-semibold mb-3 text-base sm:text-lg lg:text-xl">Download From</p>
 
       {/* Download buttons */}
-      <div className="flex flex-wrap justify-center md:justify-start items-center gap-4">
-        <div className="bg-[#3A3A3C] flex items-center justify-center rounded-lg px-4 py-2">
-          <img src="GooglePlay.png" alt="Google Play" className="h-8 sm:h-10" />
+      <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 ">
+        <div className="bg-[#3A3A3C] flex items-center justify-center rounded-lg px-4 py-2 group ">
+          <img src="GooglePlay.png" alt="Google Play" className="h-8 sm:h-10 group-hover:scale-95 transition-all duration-200 " />
         </div>
-        <div className="bg-[#3A3A3C] flex items-center justify-center rounded-lg px-4 py-2">
-          <img src="Apple.png" alt="App Store" className="h-8 sm:h-10" />
+        <div className="bg-[#3A3A3C] flex items-center justify-center rounded-lg px-4 py-2 group ">
+          <img src="Apple.png" alt="App Store" className="h-8 sm:h-10 group-hover:scale-95 transition-all duration-200" />
         </div>
       </div>
     </div>

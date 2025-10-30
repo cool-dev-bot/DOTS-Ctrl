@@ -22,7 +22,7 @@ const Navbar = () => {
         </div>
 
         {/* Center: Nav Links (Desktop) */}
-        <ul className="hidden md:flex space-x-10 text-gray-800 font-medium">
+        <ul className="hidden md:flex space-x-10 text-gray-800 ">
           {["About", "Projects", "Products", "Contact"].map((item) => (
             <li
               key={item}
@@ -35,7 +35,7 @@ const Navbar = () => {
 
         {/* Right: Get Quote Button (Desktop) */}
         <div className="hidden md:block">
-          <button className="bg-[#BF1E2E] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#a91a27] transition">
+          <button className="bg-[#BF1E2E] text-white px-6 py-2 rounded-lg font-light hover:bg-[#a91a27] transition">
             Get Quote
           </button>
         </div>
