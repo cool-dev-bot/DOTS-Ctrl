@@ -21,7 +21,7 @@ const HeroSection = () => {
       {/* Hero Image */}
       <div className=" w-full p-0 ">
         <img
-          src="/Hands.png" // 👈 transparent background image here
+          src="/hands.png" // 👈 transparent background image here
           alt="Automation Illustration"
           className="w-full mx-auto object-contain drop-shadow-2xl"
         />

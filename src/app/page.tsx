@@ -56,9 +56,9 @@ export default function Home() {
 {/* Thired Section */}
 <section className="bg-[#BF1E2E] w-[98%] mx-auto rounded-xl pt-16 md:pt-24 px-4 sm:px-8 md:px-16 lg:px-20 flex flex-col md:flex-row items-center justify-between text-white font-montserrat gap-10 md:gap-6">
   {/* Left Side - Image */}
-  <div className="w-full md:w-1/2 flex justify-center items-center order-1 md:order-none">
+  <div className="w-full md:w-1/2 flex justify-center items-center order-1 md:order-0">
     <img
-      src="Mobile.png"
+      src="/Mobile.png"
       alt="Control App"
       className="w-3/4 sm:w-2/3 md:w-full max-w-sm md:max-w-none"
     />
@@ -86,10 +86,10 @@ export default function Home() {
       {/* Download buttons */}
       <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 ">
         <div className="bg-[#3A3A3C] flex items-center justify-center rounded-lg px-4 py-2 group ">
-          <img src="GooglePlay.png" alt="Google Play" className="h-8 sm:h-10 group-hover:scale-95 transition-all duration-200 " />
+          <img src="/GooglePlay.png" alt="Google Play" className="h-8 sm:h-10 group-hover:scale-95 transition-all duration-200 " />
         </div>
         <div className="bg-[#3A3A3C] flex items-center justify-center rounded-lg px-4 py-2 group ">
-          <img src="Apple.png" alt="App Store" className="h-8 sm:h-10 group-hover:scale-95 transition-all duration-200" />
+          <img src="/Apple.png" alt="App Store" className="h-8 sm:h-10 group-hover:scale-95 transition-all duration-200" />
         </div>
       </div>
     </div>
