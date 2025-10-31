@@ -60,7 +60,7 @@ export default function AboutUs() {
       alt="About DOTS"
       className="rounded-3xl w-full max-w-[500px] h-auto object-cover"
     />
-    <h3 className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 px-4 sm:px-6 py-2 sm:py-3 rounded-full text-lg sm:text-xl md:text-[1.6vw] font-medium text-white text-center bg-black/30 backdrop-blur-sm">
+    <h3 className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 px-4 sm:px-6 py-2 sm:py-3 rounded-full text-lg sm:text-xl md:text-[1.6vw] font-medium text-white text-center  backdrop-blur-sm">
       <span className="text-[#BF1E2E]">Outstretching</span> Uniqueness
     </h3>
   </div>

@@ -169,8 +169,8 @@ export default function Home() {
           </div>
         ))}
 
-        <div className="space-y-4">
-          <img src="/MakeInIndia.png" alt="Logo" className="w-64 md:w-80 mx-auto" />
+        <div className="space-y-4 flex items-start justify-start ">
+          <img src="/MakeInIndia.png" alt="Logo" className="w-64 md:w-80 " />
         </div>
       </div>
     </div>

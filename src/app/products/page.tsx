@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const ProductsPage = () => {
   const categories = [
@@ -9,7 +10,6 @@ const ProductsPage = () => {
     "Motion Sensor",
   ];
 
-  // ✅ Type-safe and flexible definition
   const subcategoriesData: Record<string, string[]> = {
     "Touch Switches": ["2 Module", "4 Module", "6 Module"],
     "Retrofit Switches": ["1 Channel", "2 Channel"],
@@ -24,6 +24,8 @@ const ProductsPage = () => {
       subcategory: "2 Module",
       model: "DOTS T2",
       color: "Black",
+      description:
+        "A sleek 2-module touch switch with modern design and smooth touch response.",
       img: "/switch1.jpg",
     },
     {
@@ -32,6 +34,8 @@ const ProductsPage = () => {
       subcategory: "4 Module",
       model: "DOTS T4",
       color: "White",
+      description:
+        "Elegant 4-module touch switch designed for smart control and aesthetics.",
       img: "/switch2.jpg",
     },
     {
@@ -40,6 +44,8 @@ const ProductsPage = () => {
       subcategory: "1 Channel",
       model: "DOTS R1",
       color: "Black",
+      description:
+        "Retrofit 1-channel switch for seamless smart conversion of traditional switches.",
       img: "/retrofit1.jpg",
     },
     {
@@ -48,6 +54,8 @@ const ProductsPage = () => {
       subcategory: "WiFi",
       model: "DOTS IR-W",
       color: "Red",
+      description:
+        "WiFi-based IR Blaster that connects all your remote devices in one control.",
       img: "/irblaster.jpg",
     },
     {
@@ -56,11 +64,34 @@ const ProductsPage = () => {
       subcategory: "Wall Mounted",
       model: "DOTS MS-W",
       color: "White",
+      description:
+        "Wall-mounted motion sensor with high sensitivity and smart detection.",
       img: "/motion.jpg",
     },
   ];
-const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
+
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(
+    null
+  );
+  const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
+
+  // ✅ Fully disable background scroll when modal is open
+  useEffect(() => {
+    const html = document.documentElement;
+    if (selectedProduct) {
+      const scrollY = window.scrollY;
+      html.style.position = "fixed";
+      html.style.top = `-${scrollY}px`;
+      html.style.width = "100%";
+    } else {
+      const scrollY = html.style.top;
+      html.style.position = "";
+      html.style.top = "";
+      html.style.width = "";
+      if (scrollY) window.scrollTo(0, parseInt(scrollY || "0") * -1);
+    }
+  }, [selectedProduct]);
 
   const filteredProducts = productsData.filter((product) => {
     if (!selectedCategory) return true;
@@ -73,8 +104,7 @@ const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(nu
   });
 
   return (
-    <section className="w-[95%] mx-auto py-16 md:py-24 font-montserrat">
-      {/* Heading */}
+    <section className="w-[95%] mx-auto py-16 md:py-24 font-montserrat relative">
       <h1 className="text-5xl md:text-7xl font-semibold mb-10 text-center">
         Our <span className="text-[#BF1E2E]">Products</span>
       </h1>
@@ -142,7 +172,10 @@ const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(nu
                 <p className="text-[#3A3A3C] text-base font-medium">
                   Colour: {product.color}
                 </p>
-                <button className="mt-3 bg-[#3A3A3C] text-white px-5 py-2 rounded-full hover:bg-[#BF1E2E] transition-all duration-300">
+                <button
+                  onClick={() => setSelectedProduct(product)}
+                  className="mt-3 bg-[#3A3A3C] text-white px-5 py-2 rounded-full hover:bg-[#BF1E2E] transition-all duration-300"
+                >
                   View Details
                 </button>
               </div>
@@ -154,6 +187,57 @@ const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(nu
           </p>
         )}
       </div>
+
+      {/* Framer Motion Modal */}
+      <AnimatePresence>
+        {selectedProduct && (
+          <motion.div
+            key="overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 bg-black/20 backdrop-blur-[2px] flex items-center justify-center z-60"
+            onClick={() => setSelectedProduct(null)} // click outside to close
+          >
+            <motion.div
+              key="modal"
+              initial={{ scale: 0.85, y: 20, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              onClick={(e) => e.stopPropagation()} // prevent closing on click inside
+              className="bg-white w-[90%] sm:w-[600px] rounded-2xl p-6 relative shadow-lg"
+            >
+              <button
+                onClick={() => setSelectedProduct(null)}
+                className="absolute top-4 right-4 text-gray-600 text-4xl hover:text-[#BF1E2E]"
+              >
+                &times;
+              </button>
+
+              <img
+                src={selectedProduct.img}
+                alt={selectedProduct.model}
+                className="w-full h-64 object-cover rounded-lg mb-5"
+              />
+              <h2 className="text-3xl font-semibold text-[#BF1E2E] mb-2">
+                {selectedProduct.model}
+              </h2>
+              <p className="text-gray-700 font-medium mb-1">
+                Category: {selectedProduct.category}
+              </p>
+              <p className="text-gray-700 font-medium mb-1">
+                Subcategory: {selectedProduct.subcategory}
+              </p>
+              <p className="text-gray-700 font-medium mb-1">
+                Color: {selectedProduct.color}
+              </p>
+              <p className="text-gray-600 mt-3">{selectedProduct.description}</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
